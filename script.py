@@ -24,14 +24,19 @@ dictionary = dict(
     w=".--",
     x="-..-",
     y="-.--",
-    z="--.."
-)
+    z="--..")
+
 def translator():
-    inputText = input("Please Input your text:")
-    return inputText.lower
+    inputText = input("Enter the text you want to translate: ")
+    print(inputText + " in Morse Code is:")
+    inputText = inputText.lower()
     textArray = list(inputText)
 
+    newString = []
     i = 0
     while i < len(textArray):
-        print(dictionary.get(textArray[i]))
+        newString.append(dictionary.get(textArray[i]))
         i += 1
+    finalString = " ".join(newString)
+    print(finalString)
+translator()
