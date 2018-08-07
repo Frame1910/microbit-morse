@@ -38,5 +38,5 @@ def english():
         newMorseString.append(dictionary.get(morseList[i]))
         i += 1
     finalMorseString = " ".join(newMorseString)
+    return finalMorseString
     print(finalMorseString)
-english()
