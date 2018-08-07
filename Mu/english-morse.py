@@ -1,3 +1,6 @@
+from microbit import *
+import audio
+
 dictionary = dict(
     a=".-",
     b="-...",
@@ -26,17 +29,15 @@ dictionary = dict(
     y="-.--",
     z="--..")
 
-def translator():
-    inputText = input("Enter the text you want to translate: ")
-    print(inputText + " in Morse Code is:")
-    inputText = inputText.lower()
-    textArray = list(inputText)
+def morse():
+    inputEnglish = "Darren"
+    inputEnglish = inputEnglish.lower()
+    englishArray = list(inputEnglish)
 
-    newString = []
+    newEnglishString = []
     i = 0
-    while i < len(textArray):
-        newString.append(dictionary.get(textArray[i]))
+    while i < len(englishArray):
+        newEnglishString.append(dictionary.get(englishArray[i]))
         i += 1
-    finalString = " ".join(newString)
-    print(finalString)
-translator()
+    finalEnglishString = " ".join(newEnglishString)
+    return finalEnglishString
