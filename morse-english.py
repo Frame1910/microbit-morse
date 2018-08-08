@@ -1,33 +1,4 @@
-dictionary = {
-    ".-": "a",
-    "-...": "b",
-    "-.-.": "c",
-    "-..": "d",
-    ".": "e",
-    "..-.": "f",
-    "--.": "g",
-    "....": "h",
-    "..": "i",
-    ".---": "j",
-    "-.-.": "k",
-    ".-..": "l",
-    "--": "m",
-    "-.": "n",
-    "---": "o",
-    ".--.": "p",
-    "--.-": "q",
-    ".-.": "r",
-    "...": "s",
-    "-": "t",
-    "..-": "u",
-    "...-": "v",
-    ".--": "w",
-    "-..-": "x",
-    "-.--": "y",
-    "--..": "z"
-}
-
-def english():
+def morseEnglish():
     inputMorse = input("Enter Morse you want to translate to English: ")
     print(inputMorse + " in English is:")
     morseList = inputMorse.split(sep=" ")
@@ -37,6 +8,5 @@ def english():
     while i < len(morseList):
         newMorseString.append(dictionary.get(morseList[i]))
         i += 1
-    finalMorseString = " ".join(newMorseString)
-    return finalMorseString
-    print(finalMorseString)
+    messageString = " ".join(newMorseString)
+    print(messageString)
