@@ -1,5 +1,5 @@
 #Morse to English dictionary
-morse-english = {
+morseToEnglish = {
     ".-": "a",
     "-...": "b",
     "-.-.": "c",
@@ -10,7 +10,7 @@ morse-english = {
     "....": "h",
     "..": "i",
     ".---": "j",
-    "-.-.": "k",
+    "-.-": "k",
     ".-..": "l",
     "--": "m",
     "-.": "n",
@@ -29,7 +29,7 @@ morse-english = {
 }
 
 #ENglish to Morse dictionary
-english-morse = dict(
+dictionary = dict(
     a=".-",
     b="-...",
     c="-.-.",

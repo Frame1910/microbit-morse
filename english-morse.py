@@ -1,7 +1,9 @@
+from dict import *
+
 def englishMorse():
     inputEnglish = input("Enter the English you want to translate: ")
     print(inputEnglish + " in Morse Code is:")
-    inputText = inputEnglish.lower()
+    inputEnglish = inputEnglish.lower()
     englishArray = list(inputEnglish)
 
     newEnglishString = []
@@ -11,3 +13,4 @@ def englishMorse():
         i += 1
     messageString = " ".join(newEnglishString)
     print(messageString)
+englishMorse()
