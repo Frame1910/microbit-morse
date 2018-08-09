@@ -29,7 +29,7 @@ morseToEnglish = {
 }
 
 #ENglish to Morse dictionary
-dictionary = dict(
+englishToMorse = dict(
     a=".-",
     b="-...",
     c="-.-.",
