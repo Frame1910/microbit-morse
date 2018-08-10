@@ -4,7 +4,6 @@ def morseEnglish():
     inputMorse = input("Enter Morse you want to translate to English: ")
     print(inputMorse + " in English is:")
     morseList = inputMorse.split(sep=" ")
-    print(morseList)
 
     newMorseString = []
     i = 0
