@@ -1,18 +1,19 @@
 import radio
 import microbit
 
+# Turn on radio
+radio.on()
+
+data = ""
 messageString = ""
 def radioRecieve():
-    # Turn on radio
-    radio.on()
     # Radio listener
     while True:
-        radio.receive()
-        if radio.receive() != "none":
+        data = radio.receive()
+        if data != "none":
             break
-        
-    messageString = radioRecieve()
-    microbit.display.scroll("TRUE")
+    messageString = data
+    microbit.display.scroll(messageString)
     return messageString
 while True:
     radioRecieve()
