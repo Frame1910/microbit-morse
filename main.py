@@ -3,10 +3,11 @@ from morseToEnglish import *
 
 mode = 0
 def chooseFunction():
-    mode = input("English or Morse? (Case Sens) ")
-    if mode == "English":
+    mode = input("English or Morse? ")
+    mode = mode.lower()
+    if mode == "english":
         englishMorse()
-    if mode == "Morse":
+    if mode == "morse":
         morseEnglish()
 
 while True:
