@@ -11,7 +11,6 @@ def englishMorse():
     i = 0
     while i < len(englishArray):
         newEnglishString.append(englishToMorse.get(englishArray[i]))
-        print(newEnglishString)
         i += 1
     messageString = " ".join(newEnglishString)
     print(messageString)
