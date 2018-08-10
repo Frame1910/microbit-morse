@@ -1,8 +1,21 @@
 # Micro:morse
-Micro:morse is a python based Morse code translator that I built for a Computer Science Assessment using Micro:bits.
+Micro:morse is a python based Morse code translator that is in development for a project. The planned features of this script are by order of priority:
+**Bold = Completed**
+__Italics = Initiated development__
+
+- **Translate between Morse code and English**
+- **Have either function be called at will by the user**
+- __Transmit the translated data over radio using Micro:bits__
+- Input message data into the Micro:bit via a mobile phone interface (Micro:bit app)
+- Allow users to have a conversation over this communication method, this includes:
+  - Sending a message at will
+  - Being able to receive a message at any time from someone else
+  - Two way conversation, with both parties having the same code being executed on each one of their Micro:bits
 
 ## Usage
-Run one of the scripts, depending on what module you want to use. Currently, modules are in seperate files for testing purposes. Once finished, I will move all the code to one file where it can be executed by Micro:bits.
+In order to test this yourself, you need to download the repository, unzip it, then run it from command line/terminal. Python 3.x is needed to run most of the scripts.
+**Note: Any scripts in the "Mu" file directory will not run on anything besides a Micro:bit as those files use MicroPython, not standard Python.**
 
 ## Documentation
 Documentation including detailed planning can be found on the Google Doc found [here](https://docs.google.com/document/d/1YJrq8PJzLuS7DwwlR7GVcPPCk7Op0qMsjf26sREFu0M/edit?usp=sharing).
+**Note: All planning and documentation is sole property of repository owner!**
