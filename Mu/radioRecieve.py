@@ -13,7 +13,4 @@ def radioRecieve():
         if data != "none":
             break
     messageString = data
-    microbit.display.scroll(messageString)
-    return messageString
-while True:
-    radioRecieve()
+    microbit.display.scroll('Hello!' + messageString)

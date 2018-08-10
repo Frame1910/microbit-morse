@@ -1,7 +1,7 @@
 import radio
 import microbit
-
-messageString = "Hello World"
+from englishToMorse import *
+from morseToEnglish import *
 
 # Turn on radio
 radio.on()
@@ -10,7 +10,15 @@ radio.on()
 def radioSend():
     # Send radio message
     radio.send(messageString)
-    microbit.display.scroll('TRUE')
+    microbit.display.scroll('Sent')
 
-while True:
-    radioSend()
+data = ""
+messageString = ""
+def radioRecieve():
+    # Radio listener
+    while True:
+        data = radio.receive()
+        if data != "none":
+            break
+    messageString = data
+    print(messageString)
