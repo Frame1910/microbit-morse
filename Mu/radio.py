@@ -1,7 +1,5 @@
 import radio
 import microbit
-from englishToMorse import *
-from morseToEnglish import *
 
 # Turn on radio
 radio.on()
