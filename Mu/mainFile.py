@@ -1,5 +1,5 @@
 from microbit import *
-
+import radio
 
 
 
@@ -70,13 +70,15 @@ englishToMorse = {
 # RADIO MODULES --------------------------------------------------------------------------------------------
 
 # Turn on radio
-radio.on()
 
 # Send Function
-def radioSend():
-    # Send radio message
-    radio.send(messageString)
-    microbit.display.scroll('Sent')
+def radioSend()
+    radio.on()
+    while True:
+        # Send radio message
+        radio.send(messageString)
+        print("Sending")
+        display.scroll('Sent')
 
 data = ""
 receivedString = ""
@@ -93,7 +95,6 @@ def radioRecieve():
 
 
 # TRANSLATION MODULES ---------------------------------------------------------------------------------------
-
 def englishMorse():
     inputEnglish = input("Enter the English you want to translate: ")
     #Make input lower case
@@ -111,6 +112,8 @@ def englishMorse():
     #Join each arrat value into one string
     messageString = " ".join(newEnglishString)
     print(messageString)
+    radioSend()
+    
 
 def morseEnglish():
     inputMorse = input("Enter Morse you want to translate to English: ")
