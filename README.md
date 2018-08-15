@@ -17,8 +17,10 @@ _Italics = Initiated development_
   - _Two way conversation, with both parties having the same code being executed on each one of their Micro:bits_
 
 ## Usage
-In order to test this yourself, you need to download the repository, unzip it, then run it from the project root in command line/terminal. Python 3.x is needed to run most of the scripts.
-**Note: Any scripts in the "Mu" file directory will not run on anything besides a Micro:bit as those files use MicroPython, not standard Python.**
+In order to test this yourself, you need:
+- 2 Micro:bits
+- The Mu Python Editor
+Mu is an editor that has a built in, Real Time terminal where text input is available for use in scripts. Load ``mainFile.py`` into the editor and plug in your Micro:bits to separate computers
 
 ## Documentation
 This project is being developed on Atom by GitHub using Python as the primary language.
@@ -36,6 +38,34 @@ Originally, there was meant to be 7 different modules:
 - Caller (Main function the user will interact with)
 
 ## Modular Details
+
+### Radio Communication Modules
+These two modules contain the configuration of data transfer via a radio signal between Micro:bits. Each module is slightly different and they can **not** be implemented as individualised functions. This is due to the fact that the outgoing message is determined within another function and thus the variable cannot be used in another function. Like so:
+```python
+newEnglishString = []
+  # Loop the comparison of individualised English characters with their value in Morse
+  i = 0
+  while i < len(englishArray):
+      # Add each new Morse value to a new array of morse characters
+      newEnglishString.append(englishToMorse.get(englishArray[i]))
+      i += 1
+  # Join each arrat value into one string
+  messageString = " ".join(newEnglishString)
+  print(messageString)
+```
+```python
+def radioSend():
+    # Radio Sending
+    radio.on()
+    while True:
+        # Send radio message
+        radio.send(messageString)
+        print("Sending")
+        display.scroll('Sent')
+```
+The variable ``messageString`` is defined in an external function and cannot be read by the ``radioSend()`` function.
+
+To fix this issue, the ``radioSend()`` function must be not exist. It's contents must be entered in the translation functions themselves. This reduces some flexibility in the algorithim as a whole.
 ### Translation Modules
 These modules server a purpose of translating any string they receive into their respective language/code. For example, ``englishMorse()`` takes user input and translates it into morse code. Similarly, ``morseEnglish()`` does the same thing but in reverse.
 
