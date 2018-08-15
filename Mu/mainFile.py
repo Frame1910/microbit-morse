@@ -33,7 +33,7 @@ morseToEnglish = {
     " ":" "
 }
 
-#ENglish to Morse dictionary
+# ENglish to Morse dictionary
 englishToMorse = {
     "a":".-",
     "b":"-...",
@@ -64,18 +64,7 @@ englishToMorse = {
     " ":" "
 }
 
-# RADIO MODULES --------------------------------------------------------------------------------------------
-
-# Turn on radio
-
-# Send Function
-def radioSend():
-    radio.on()
-    while True:
-        # Send radio message
-        radio.send(messageString)
-        print("Sending")
-        display.scroll('Sent')
+# RADIO MODULE --------------------------------------------------------------------------------------------
 
 data = ""
 receivedString = ""
@@ -88,8 +77,11 @@ def radioRecieve():
     receivedString = data
     display.scroll("Received")
     print(receivedString)
-
-
+    
+    if "." or "-" in receivedString:
+        morseEnglish(receivedString)
+    else
+        englishMorse(receivedString)
 
 # TRANSLATION MODULES ---------------------------------------------------------------------------------------
 def englishMorse():
@@ -109,6 +101,8 @@ def englishMorse():
     # Join each arrat value into one string
     messageString = " ".join(newEnglishString)
     print(messageString)
+    
+    # Radio Sending 
     radio.on()
     while True:
         # Send radio message
@@ -117,7 +111,7 @@ def englishMorse():
         display.scroll('Sent')
     
 
-def morseEnglish():
+def morseEnglish(receivedString):
     inputMorse = input("Enter Morse you want to translate to English: ")
     print(inputMorse + " in English is:")
     # Split each Morse chracter by the spaces between them
@@ -133,6 +127,14 @@ def morseEnglish():
     # Join each arrat value into one string
     messageString = " ".join(newMorseString)
     print(messageString)
+    
+    # Radio Sending 
+    radio.on()
+    while True:
+        # Send radio message
+        radio.send(messageString)
+        print("Sending")
+        display.scroll('Sent')
 
 
 # MAIN.PY -------------------------------------------------------------------------------------------------------
