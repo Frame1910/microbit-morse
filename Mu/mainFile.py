@@ -86,7 +86,7 @@ def radioRecieve():
     # Radio listener
     while True:
         data = radio.receive()
-        if data != "none":
+        if data != None:
             break
     receivedString = data
     display.scroll("Received")
@@ -112,7 +112,12 @@ def englishMorse():
     #Join each arrat value into one string
     messageString = " ".join(newEnglishString)
     print(messageString)
-    radioSend()
+    radio.on()
+    while True:
+        # Send radio message
+        radio.send(messageString)
+        print("Sending")
+        display.scroll('Sent')
     
 
 def morseEnglish():
