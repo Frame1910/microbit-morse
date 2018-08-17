@@ -1,5 +1,6 @@
 from microbit import *
 import radio
+import sys
 # DICTIONARY DEFINITIONS -------------------------------------------------------------
 
 # Morse to English dictionary
@@ -70,18 +71,36 @@ data = ""
 receivedString = ""
 def radioRecieve():
     # Radio listener
+    radio.on()
     while True:
         data = radio.receive()
         if data != None:
-            break
+            if data == "exit":
+                exit()
+            else 
+                break
     receivedString = data
+    for x in range(5):
+        display.scroll("Confirming")
+        radio.send("confirm")
     display.scroll("Received")
     print(receivedString)
+    print("Translating")
     
+    # REQUIRES TESTING -------------
     if "." or "-" in receivedString:
         morseEnglish(receivedString)
     else
         englishMorse(receivedString)
+    
+    while True:
+        display.scroll("Reply?")
+        if button_a.is_pressed():
+            caller()
+        if button_b.is_pressed():
+            display.scroll("Goodbye")
+            exit()
+    
 
 # TRANSLATION MODULES ---------------------------------------------------------------------------------------
 def englishMorse():
@@ -101,15 +120,21 @@ def englishMorse():
     # Join each arrat value into one string
     messageString = " ".join(newEnglishString)
     print(messageString)
-    
-    # Radio Sending 
+
+    # Radio Sending
     radio.on()
     while True:
         # Send radio message
         radio.send(messageString)
         print("Sending")
-        display.scroll('Sent')
-    
+        # REQUIRES TESTING ---
+        data = radio.receive()
+        if data == "confirm":
+            break
+    display.scroll('Sent')
+    while True:
+        radioRecieve()
+
 
 def morseEnglish(receivedString):
     inputMorse = input("Enter Morse you want to translate to English: ")
@@ -127,8 +152,8 @@ def morseEnglish(receivedString):
     # Join each arrat value into one string
     messageString = " ".join(newMorseString)
     print(messageString)
-    
-    # Radio Sending 
+
+    # Radio Sending
     radio.on()
     while True:
         # Send radio message
@@ -140,7 +165,7 @@ def morseEnglish(receivedString):
 # MAIN.PY -------------------------------------------------------------------------------------------------------
 
 # User pushes either button A or button B to choose a mode
-def chooseFunction():
+def caller():
     while True:
         display.scroll("?")
         if button_a.is_pressed():

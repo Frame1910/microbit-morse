@@ -46,7 +46,7 @@ newEnglishString = []
   # Loop the comparison of individualised English characters with their value in Morse
   i = 0
   while i < len(englishArray):
-      # Add each new Morse value to a new array of morse characters
+      # Add each new Morse value to a new array of Morse characters
       newEnglishString.append(englishToMorse.get(englishArray[i]))
       i += 1
   # Join each arrat value into one string
@@ -67,7 +67,7 @@ The variable ``messageString`` is defined in an external function and cannot be 
 
 To fix this issue, the ``radioSend()`` function must be not exist. It's contents must be entered in the translation functions themselves. This reduces some flexibility in the algorithim as a whole.
 ### Translation Modules
-These modules server a purpose of translating any string they receive into their respective language/code. For example, ``englishMorse()`` takes user input and translates it into morse code. Similarly, ``morseEnglish()`` does the same thing but in reverse.
+These modules server a purpose of translating any string they receive into their respective language/code. For example, ``englishMorse()`` takes user input and translates it into Morse code. Similarly, ``morseEnglish()`` does the same thing but in reverse.
 
 These functions do this in the following way:
 ```python
@@ -81,11 +81,54 @@ input = input("Enter the English you want to translate: ")
   # Loop the comparison of individualised characters with their value in the target language.
   i = 0
   while i < len(englishArray): # Loops based on number of characters in the array.
-      # Add each new Morse value to a new array of morse characters
-      newEnglishString.append(englishToMorse.get(englishArray[i]))
+      # Add each new Morse value to a new array of Morse characters
+      newString.append(dictionary.get(newArray[i]))
       i += 1
   # Join each array value into one string
-  messageString = " ".join(newEnglishString)
+  messageString = " ".join(newString)
   print(messageString)
 ```
-The method in both cases is very similar, however, when translating morse code into English, the string of morse characters **must** be seperated by spaces by the user.
+The method in both cases is very similar, however, when translating Morse code into English, the string of Morse characters **must** be separated by spaces by the user. The code also is modified like so:
+```python
+# Instead of:
+newArray = list(input)
+# Use:
+morseList = inputMorse.split(sep=" ")
+# Split each Morse character by the spaces between them
+```
+Changing the parsing method for the user input for Morse code is vital, the `.list()` method divides a string into an array based on words separated by spaces.
+However, with Morse code, dots and dashes don't count as words to this method. Therefore the `.split()` method must be used to separate Morse words based a set parameter set to a space: `.split(sep=" ")`.
+### Dictionary Modules
+ The dictionary modules server as a reference for the script to translate the user input into another language/code. Both dictionaries are actual dictionary methods that contains keys and values. The keys are used as references when translating the user input characters into the corresponding language/code.
+```python
+newString = []
+# Loop the comparison of individualised characters with their value in the target language.
+i = 0
+while i < len(newArray): # Loops based on number of characters in the array.
+    # Add each new Morse value to a new array of Morse characters
+    newString.append(dictionary.get(newArray[i]))
+    i += 1
+```
+`.get()` is the method for reading key values and returning their corresponding values in a dictionary. This is looped for every character in the array from the `userInput`. This method is the same for both `englishMorse()` and `morseEnglish()`.
+
+### Conversational Modules
+These modules are executed after a message is received from radio. They allow the user to reply to a message they receive. However, on the other end, the device that just sent the message now listens for a reply, and will continue to do so unless cancelled.
+
+### Caller Module - _"Where the magic happens"_
+The caller function serves as the user's form of control; they can launch any major function of the script and jump between modules using commands in the terminal. It does this by an infinite loop that checks for button presses on the Micro:bit.
+
+`button_a` = Type in English and translate to Morse code.
+
+`button_b` = Type in Morse code and translate to English.
+
+```python
+# User pushes either button A or button B to choose a mode
+def caller():
+  while True:
+    display.scroll("?")
+    if button_a.is_pressed():
+      englishMorse()
+    if button_b.is_pressed():
+      morseEnglish()
+```
+After code is executed the script returns to this script for a new message.
