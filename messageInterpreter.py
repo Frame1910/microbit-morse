@@ -1,35 +1,36 @@
-import 
+from dict import *
 # REQUIRES TESTING --------------------------------------------------------------------------
-receivedString = ".- .-"
+receivedString = "Hello World"
 def messageInterpreter():
     if "." or "-" in receivedString:
-      # Split each Morse chracter by the spaces between them
-      receivedMorseList = receivedString.split(sep=" ")
+        # Split each Morse chracter by the spaces between them
+        receivedMorseList = receivedString.split(sep=" ")
 
-      receivedMorseString = []
-      # Loop the comparison of individualised Morse characters with their value in English
-      i = 0
-      while i < len(receivedMorseList):
+        receivedMorseString = []
+        # Loop the comparison of individualised Morse characters with their value in English
+        i = 0
+        while i < len(receivedMorseList):
           # Add each translated value to a new array
           receivedMorseString.append(morseToEnglish.get(receivedMorseList[i]))
           i += 1
-      # Join each arrat value into one string
-      translatedString = " ".join(receivedMorseString)
-      print("Message Received:")
-      print(translatedString)
+        # Join each arrat value into one string
+        translatedString = " ".join(receivedMorseString)
+        print("Message Received:")
+        print(translatedString)
     else:
-      # List each character as an array of characters
-      receivedEnglishArray = list(receivedString)
+        receivedStringLower = receivedString.lower()
+        # List each character as an array of characters
+        receivedEnglishArray = list(receivedStringLower)
 
-      receivedEnglishString = []
-      # Loop the comparison of individualised English characters with their value in Morse
-      i = 0
-      while i < len(receivedEnglishArray):
+        receivedEnglishString = []
+        # Loop the comparison of individualised English characters with their value in Morse
+        i = 0
+        while i < len(receivedEnglishArray):
           # Add each new Morse value to a new array of morse characters
           receivedEnglishString.append(englishToMorse.get(receivedEnglishArray[i]))
           i += 1
-      # Join each arrat value into one string
-      translatedString = " ".join(receivedEnglishString)
-      print("Message Received:")
-      print(translatedString)
+        # Join each arrat value into one string
+        translatedString = " ".join(receivedEnglishString)
+        print("Message Received:")
+        print(translatedString)
 messageInterpreter()
