@@ -91,7 +91,6 @@ def radioRecieve():
     if "." in receivedString or "-" in receivedString:
         # Split each Morse chracter by the spaces between them
         receivedMorseList = receivedString.split(sep="&")
-        print(receivedMorseList)
 
         receivedMorseString = []
         # Loop the comparison of individualised Morse characters with their value in English
@@ -99,7 +98,6 @@ def radioRecieve():
         while i < len(receivedMorseList):
             # Add each translated value to a new array
             receivedMorseString.append(morseToEnglish.get(receivedMorseList[i]))
-            print(receivedMorseString)
             i += 1
         # Join each arrat value into one string
         translatedString = "".join(receivedMorseString)
