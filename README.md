@@ -20,7 +20,9 @@ _Italics = Initiated development_
 In order to test this yourself, you need:
 - 2 Micro:bits
 - The Mu Python Editor
-Mu is an editor that has a built in, Real Time terminal where text input is available for use in scripts. Load ``mainFile.py`` into the editor and plug in your Micro:bits to separate computers
+Mu is an editor that has a built in, Real Time terminal where text input is available for use in scripts. Load ``mainFile.py`` into the editor and plug in your Micro:bits to separate computers. Run the code on each Micro:bit (Code is slightly different on each, one running the listener function first to get the conversation started).
+
+When typing in your text, be aware that translated Morse will contain "&" symbols between each letter represented in Morse. These symbols assist the program in reading Morse code later when translating back to English.
 
 ## Documentation
 This project is being developed on Atom by GitHub using Python as the primary language.
