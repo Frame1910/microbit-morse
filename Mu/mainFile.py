@@ -1,6 +1,6 @@
 from microbit import *
 import radio
-import sys
+from sys import *
 # DICTIONARY DEFINITIONS -------------------------------------------------------------
 
 # Morse to English dictionary
@@ -80,9 +80,8 @@ def radioRecieve():
             else:
                 break
     receivedString = data
-    for x in range(5):
-        display.scroll("Confirming")
-        radio.send("confirm")
+    display.scroll("Confirming")
+    radio.send("confirm")
     display.scroll("Received")
     print(receivedString)
     print("Translating")
@@ -90,7 +89,7 @@ def radioRecieve():
     # REQUIRES TESTING --------------------------------------------------------------------------
     if "." in receivedString or "-" in receivedString:
         # Split each Morse chracter by the spaces between them
-        receivedMorseList = receivedString.split(sep="&")
+        receivedMorseList = receivedString.split(sep="!!")
 
         receivedMorseString = []
         # Loop the comparison of individualised Morse characters with their value in English
@@ -145,7 +144,7 @@ def englishMorse():
         newEnglishString.append(englishToMorse.get(englishArray[i]))
         i += 1
     # Join each arrat value into one string
-    messageString = " ".join(newEnglishString)
+    messageString = "space".join(newEnglishString)
     print(messageString)
 
     # Radio Sending
@@ -155,12 +154,11 @@ def englishMorse():
         radio.send(messageString)
         print("Sending")
         # REQUIRES TESTING ---
-        data = radio.receive()
-        if data == "confirm":
+        confirmation = radio.receive()
+        if confirmation == "confirm":
             break
-    display.scroll('Sent')
-    while True:
-        radioRecieve()
+    print('Sent')
+    radioRecieve()
 
 
 def morseEnglish():
@@ -177,7 +175,7 @@ def morseEnglish():
         newMorseString.append(morseToEnglish.get(morseList[i]))
         i += 1
     # Join each arrat value into one string
-    messageString = " ".join(newMorseString)
+    messageString = "!!".join(newMorseString)
     print(messageString)
 
     # Radio Sending
