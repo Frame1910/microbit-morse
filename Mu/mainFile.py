@@ -73,6 +73,7 @@ def radioRecieve():
     # Radio listener
     radio.on()
     while True:
+        print("Scanning")
         data = radio.receive()
         if data != None:
             if data == "exit":
@@ -80,8 +81,9 @@ def radioRecieve():
             else:
                 break
     receivedString = data
-    display.scroll("Confirming")
-    radio.send("confirm")
+    for x in range(5):
+        print("Confirming")
+        radio.send("confirm")
     display.scroll("Received")
     print(receivedString)
     print("Translating")
@@ -89,7 +91,7 @@ def radioRecieve():
     # REQUIRES TESTING --------------------------------------------------------------------------
     if "." in receivedString or "-" in receivedString:
         # Split each Morse chracter by the spaces between them
-        receivedMorseList = receivedString.split(sep="!!")
+        receivedMorseList = receivedString.split("&")
 
         receivedMorseString = []
         # Loop the comparison of individualised Morse characters with their value in English
@@ -144,7 +146,7 @@ def englishMorse():
         newEnglishString.append(englishToMorse.get(englishArray[i]))
         i += 1
     # Join each arrat value into one string
-    messageString = "space".join(newEnglishString)
+    messageString = "&".join(newEnglishString)
     print(messageString)
 
     # Radio Sending
