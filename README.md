@@ -22,7 +22,7 @@ In order to test this yourself, you need:
 - The Mu Python Editor
 Mu is an editor that has a built in, Real Time terminal where text input is available for use in scripts. Load ``mainFile.py`` into the editor and plug in your Micro:bits to separate computers. Run the code on each Micro:bit (Code is slightly different on each, one running the listener function first to get the conversation started).
 
-When typing in your text, be aware that translated Morse will contain "&" symbols between each letter represented in Morse. These symbols assist the program in reading Morse code later when translating back to English. The rec
+When typing in your text, be aware that translated Morse will contain "&" symbols between each letter represented in Morse. These symbols assist the program in reading Morse code later when translating back to English. The receiving device will then stop scanning for a message and send a confirmation packet to the sender saying a message has been received. The sender will now become the receiver, and the receiver now becoming the sender.
 
 ## Documentation
 This project is being developed on Atom by GitHub using Python as the primary language.
@@ -115,6 +115,40 @@ while i < len(newArray): # Loops based on number of characters in the array.
 
 ### Conversational Modules
 These modules are executed after a message is received from radio. They allow the user to reply to a message they receive. However, on the other end, the device that just sent the message now listens for a reply, and will continue to do so unless cancelled.
+An example of this is the `messageInterpreter.py` file.
+```python
+if "." in receivedString or "-" in receivedString:
+      # Split each Morse chracter by the spaces between them
+      receivedMorseList = receivedString.split("&")
+
+      receivedMorseString = []
+      # Loop the comparison of individualised Morse characters with their value in English
+      i = 0
+      while i < len(receivedMorseList):
+          # Add each translated value to a new array
+          receivedMorseString.append(morseToEnglish.get(receivedMorseList[i]))
+          i += 1
+      # Join each arrat value into one string
+      translatedString = "".join(receivedMorseString)
+      print("Message Received:")
+      print(translatedString)
+  else:
+      receivedStringLower = receivedString.lower()
+      # List each character as an array of characters
+      receivedEnglishArray = list(receivedStringLower)
+
+      receivedEnglishString = []
+      # Loop the comparison of individualised English characters with their value in Morse
+      i = 0
+      while i < len(receivedEnglishArray):
+          # Add each new Morse value to a new array of morse characters
+          receivedEnglishString.append(englishToMorse.get(receivedEnglishArray[i]))
+          i += 1
+      # Join each arrat value into one string
+      translatedString = "&".join(receivedEnglishString)
+      print("Message Received:")
+      print(translatedString)
+```
 
 ### Caller Module - _"Where the magic happens"_
 The caller function serves as the user's form of control; they can launch any major function of the script and jump between modules using commands in the terminal. It does this by an infinite loop that checks for button presses on the Micro:bit.
