@@ -149,6 +149,9 @@ if "." in receivedString or "-" in receivedString:
       print("Message Received:")
       print(translatedString)
 ```
+This massive block of code is a amalgamation of the translator and radio modules.
+
+Parts of the translator modules had to be copied and changed into this module because of the way the script handles data determined in other modules. For example, `receivedString` cannot be handled by the translator modules such as `englishMorse()` because it's value is determined in another stage. There are ways to avoid this and abstract the code further allowing a more dynamic flow, however that would require a re-write of the translator, radio and caller modules. 
 
 ### Caller Module - _"Where the magic happens"_
 The caller function serves as the user's form of control; they can launch any major function of the script and jump between modules using commands in the terminal. It does this by an infinite loop that checks for button presses on the Micro:bit.
