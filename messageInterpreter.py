@@ -61,7 +61,7 @@ englishToMorse = {
 }
 
 
-# REQUIRES TESTING --------------------------------------------------------------------------
+
 receivedString = "....&.&.-..&.-..&---& &.--&---&.-.&.-..&-.."
 def messageInterpreter():
     if "." in receivedString or "-" in receivedString:

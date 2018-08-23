@@ -8,7 +8,7 @@ _Italics = Initiated development_
 ~~Strikethrough = Development cancelled~~
 
 - **Translate between Morse code and English**
-- **Have either function be called at will by the user**
+- ~~Have either function be called at will by the user~~
 - **Transmit the translated data over radio using Micro:bits**
 - **Input message data into the Micro:bit via a terminal interface on a computer/laptop**
 - Allow users to have a conversation over this communication method, this includes:
@@ -22,7 +22,7 @@ In order to test this yourself, you need:
 - The Mu Python Editor
 Mu is an editor that has a built in, Real Time terminal where text input is available for use in scripts. Load ``mainFile.py`` into the editor and plug in your Micro:bits to separate computers. Run the code on each Micro:bit (Code is slightly different on each, one running the listener function first to get the conversation started).
 
-When typing in your text, be aware that translated Morse will contain "&" symbols between each letter represented in Morse. These symbols assist the program in reading Morse code later when translating back to English.
+When typing in your text, be aware that translated Morse will contain "&" symbols between each letter represented in Morse. These symbols assist the program in reading Morse code later when translating back to English. The rec
 
 ## Documentation
 This project is being developed on Atom by GitHub using Python as the primary language.
