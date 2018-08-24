@@ -1,6 +1,6 @@
 from sys import *
-# from microbit import *
-# import radio
+from microbit import *
+import radio
 
 # Morse to English dictionary
 morseToEnglish = {
@@ -65,15 +65,20 @@ englishToMorse = {
 
 def radioListen():
     radio.on()
-    data = radio.receive()
-    print("Scanning...")
 
-    while data == None:
-        radio.receive()
+    while True:
+        print("Scanning")
+        data = radio.receive()
+        if data != None:
+            if data == "exit":
+                exit()
+            else:
+                break
 
     print("Received.")
     print("Sending confirmation...")
-    radio.send("confirm")
+    for x in range(3):
+        radio.send("confirm")
     print("Confirmed.")
 
     return data
@@ -111,7 +116,7 @@ def englishMorse(message):
 
 def morseEnglish(message):
     # Split each Morse chracter by the spaces between them
-    array = message.split(sep="&")
+    array = message.split("&")
 
     newString = []
     # Loop the comparison of individualised Morse characters with their value in English
@@ -136,15 +141,16 @@ def translator(message):
 
 givenData = ""
 translatedString = ""
-mode = input("send or receive? ")
-while True:
-    if mode == "send":
-        text = input("Input message text: ")
-        messageData = translator(text)
-        radioSend(messageData)
-        mode = "receive"
-    if mode == "receive":
-        givenData = radioListen()
-        translatedData = translator(givenData)
-        print(translatedData)
-        mode = "send"
+def caller():
+    mode = input("send or receive? ")
+    while True:
+        if mode == "send":
+            text = input("Input message text: ")
+            messageData = translator(text)
+            radioSend(messageData)
+            mode = "receive"
+        if mode == "receive":
+            givenData = radioListen()
+            translatedData = translator(givenData)
+            print(translatedData)
+            mode = "send"
