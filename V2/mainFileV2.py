@@ -69,10 +69,7 @@ def radioListen():
     while True:
         data = radio.receive()
         if data != None:
-            if data == "exit":
-                exit()
-            else:
-                break
+            break
 
     print("Received.")
 
@@ -99,7 +96,6 @@ def englishMorse(message):
         i += 1
     # Join each arrat value into one string
     translatedString = "&".join(newString)
-    print(translatedString)
 
     return translatedString
 
@@ -116,7 +112,6 @@ def morseEnglish(message):
         i += 1
     # Join each arrat value into one string
     translatedString = "".join(newString)
-    print(translatedString)
 
     return translatedString
 
