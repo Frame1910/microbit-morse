@@ -65,9 +65,8 @@ englishToMorse = {
 
 def radioListen():
     radio.on()
-
+    print("Scanning...")
     while True:
-        print("Scanning")
         data = radio.receive()
         if data != None:
             if data == "exit":
@@ -76,10 +75,6 @@ def radioListen():
                 break
 
     print("Received.")
-    print("Sending confirmation...")
-    for x in range(3):
-        radio.send("confirm")
-    print("Confirmed.")
 
     return data
 
@@ -88,12 +83,6 @@ def radioSend(data):
 
     print("Transmitting...")
     radio.send(data)
-
-    print("Waiting for confirmation...")
-    confirmation = radio.receive()
-    while confirmation != "confirm":
-        radio.receive()
-    print("Confirmed.")
 
 def englishMorse(message):
     # Make input lower case
