@@ -1,6 +1,6 @@
 from sys import *
-from microbit import *
-import radio
+# from microbit import *
+# import radio
 
 # Morse to English dictionary
 morseToEnglish = {
@@ -67,23 +67,23 @@ def radioListen():
     radio.on()
     data = radio.receive()
     print("Scanning...")
-    
+
     while data == None:
         radio.receive()
-    
+
     print("Received.")
     print("Sending confirmation...")
     radio.send("confirm")
     print("Confirmed.")
-    
+
     return data
 
 def radioSend(data):
     radio.on()
-    
+
     print("Transmitting...")
     radio.send(data)
-    
+
     print("Waiting for confirmation...")
     confirmation = radio.receive()
     while confirmation != "confirm":
@@ -106,7 +106,7 @@ def englishMorse(message):
     # Join each arrat value into one string
     translatedString = "&".join(newString)
     print(translatedString)
-    
+
     return translatedString
 
 def morseEnglish(message):
@@ -123,7 +123,7 @@ def morseEnglish(message):
     # Join each arrat value into one string
     translatedString = "".join(newString)
     print(translatedString)
-    
+
     return translatedString
 
 def translator(message):
@@ -138,8 +138,8 @@ givenData = ""
 translatedString = ""
 mode = input("send or receive? ")
 while True:
-    text = input("Input message text: ")
     if mode == "send":
+        text = input("Input message text: ")
         messageData = translator(text)
         radioSend(messageData)
         mode = "receive"
