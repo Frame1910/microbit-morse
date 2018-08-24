@@ -1,7 +1,7 @@
 from sys import *
 from microbit import *
 import radio
-
+radio.config(length=251)
 # Morse to English dictionary
 morseToEnglish = {
     ".-": "a",
