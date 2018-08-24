@@ -1,8 +1,8 @@
 from sys import *
-# from microbit import *
-# improt radio
+from microbit import *
+import radio
 
-#Morse to English dictionary
+# Morse to English dictionary
 morseToEnglish = {
     ".-": "a",
     "-...": "b",
@@ -32,7 +32,7 @@ morseToEnglish = {
     "--..": "z",
     " ":" "
 }
-#English to Morse dictionary
+# English to Morse dictionary
 englishToMorse = {
     "a":".-",
     "b":"-...",
@@ -63,35 +63,51 @@ englishToMorse = {
     " ":" "
 }
 
-def radioListen(given):
+def radioListen():
     radio.on()
+    data = radio.receive()
+    print("Scanning...")
     
-    while True:
-        
+    while data == None:
+        radio.receive()
+    
+    print("Received.")
+    print("Sending confirmation...")
+    radio.send("confirm")
+    print("Confirmed.")
+    
+    return data
 
 def radioSend(data):
     radio.on()
-    print("Transmitting.")
-    print("Transmitting..")
+    
     print("Transmitting...")
     radio.send(data)
+    
+    print("Waiting for confirmation...")
+    confirmation = radio.receive()
+    while confirmation != "confirm":
+        radio.receive()
+    print("Confirmed.")
 
 def englishMorse(message):
-    #Make input lower case
+    # Make input lower case
     message = message.lower()
-    #List each character as an array of characters
+    # List each character as an array of characters
     array = list(message)
 
     newString = []
-    #Loop the comparison of individualised English characters with their value in Morse
+    # Loop the comparison of individualised English characters with their value in Morse
     i = 0
     while i < len(array):
-        #Add each new Morse value to a new array of morse characters
+        # Add each new Morse value to a new array of morse characters
         newString.append(englishToMorse.get(array[i]))
         i += 1
-    #Join each arrat value into one string
+    # Join each arrat value into one string
     translatedString = "&".join(newString)
     print(translatedString)
+    
+    return translatedString
 
 def morseEnglish(message):
     # Split each Morse chracter by the spaces between them
@@ -107,14 +123,28 @@ def morseEnglish(message):
     # Join each arrat value into one string
     translatedString = "".join(newString)
     print(translatedString)
+    
+    return translatedString
 
 def translator(message):
     if "-" in message or "." in message:
-        morseEnglish(message)
+        translatedMessage = morseEnglish(message)
     else:
-        englishMorse(message)
+        translatedMessage = englishMorse(message)
 
+    return translatedMessage
+
+givenData = ""
 translatedString = ""
-mode = input("send or receive?")
-text = input("Input text: ")
-translator(input)
+mode = input("send or receive? ")
+while True:
+    text = input("Input message text: ")
+    if mode == "send":
+        messageData = translator(text)
+        radioSend(messageData)
+        mode = "receive"
+    if mode == "receive":
+        givenData = radioListen()
+        translatedData = translator(givenData)
+        print(translatedData)
+        mode = "send"
