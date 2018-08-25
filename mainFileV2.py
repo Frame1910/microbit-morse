@@ -1,8 +1,6 @@
-# Import microbit packages
+from sys import *
 from microbit import *
-# Import radio packages
 import radio
-#Defines maximum size of data packets in radio.
 radio.config(length=251)
 # Morse to English dictionary
 morseToEnglish = {
@@ -69,23 +67,21 @@ def radioListen():
     radio.on()
     print("Scanning...")
     while True:
-        # Scans until different data other than "None" is heard.
         data = radio.receive()
         if data != None:
             break
 
     print("Received.")
-    # Return the data rectrieved from radio as the result of the function.
+
     return data
 
 def radioSend(data):
     radio.on()
-    # Data is entered through the parameter "data" and sent.
+
     print("Transmitting...")
     radio.send(data)
 
 def englishMorse(message):
-    # Data entered through parameter "message"
     # Make input lower case
     message = message.lower()
     # List each character as an array of characters
@@ -104,7 +100,6 @@ def englishMorse(message):
     return translatedString
 
 def morseEnglish(message):
-    # Data entered through parameter "message"
     # Split each Morse chracter by the spaces between them
     array = message.split("&")
 
@@ -121,35 +116,25 @@ def morseEnglish(message):
     return translatedString
 
 def translator(message):
-    # Data entered through parameter "message"
-    # If the code detects elements of Morse in "message" then it runs the Morse to English translator.
     if "-" in message or "." in message:
         translatedMessage = morseEnglish(message)
     else:
         translatedMessage = englishMorse(message)
-    # Return the translatedMessage as the result of the function.
+
     return translatedMessage
-# Globally defined variables.
+
 givenData = ""
 translatedString = ""
 def caller():
-    # Define mode
     mode = input("send or receive? ")
-    # Keeps the whole program looped infinitely
     while True:
-        # Uses "mode" to determine to send or receive.
         if mode == "send":
-            # Runs text input and translation functions if sending.
             text = input("Input message text: ")
             messageData = translator(text)
             radioSend(messageData)
-            # Changes mode to receive.
             mode = "receive"
         if mode == "receive":
-            # Sets givenData to whatever the result of radioListen() is.
             givenData = radioListen()
-            # Takes givenData and uses it as a parameter in the translator function.
             translatedData = translator(givenData)
             print(translatedData)
-            # Changes mode to send.
             mode = "send"
