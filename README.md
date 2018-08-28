@@ -156,7 +156,7 @@ while i < len(newArray): # Loops based on number of characters in the array.
 ### Caller Module - _"Where the magic happens"_
 The caller module is where the program starts, its where the user decides what mode to use and from there the program blossoms into many different branches of modules. But they all lead back to this one function.
 
-![Whole Function Chart](MicroMorse-Flow-Whole Function.png)
+![Whole Function Chart](MicroMorse-Flow-WholeFunc.png)
 
 ```python
 def caller():
