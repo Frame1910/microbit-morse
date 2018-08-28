@@ -32,6 +32,7 @@ The ampersands segment each letter (including spaces) to make the Morse easier t
 Once the English is translated, it is broadcasted **once** via radio in all directions to all devices on the same channel. Since the receiver end is already scanning on an loop, it will pick up the signal and interpret the message, translate it back into English, and display it in the terminal. The sender will not enter receiving mode, likewise, the receiver becomes the sender.  
 
 ## Documentation
+### About
 This project is being developed on Atom by GitHub using Python as the primary language.
 <br>
 Originally, there was meant to be 7 different modules:
@@ -78,7 +79,13 @@ def radioListen():
 ```
 
 ### Translation Modules
-These modules handle the translation of data between Morse and English. These include `englishMorse()`, `morseEnglish()` and `translator()`.
+These modules handle the translation of data between Morse and English. These include `englishMorse()`, `morseEnglish()` and `translator()`. The flow is shown below:
+
+![Translator Function Chart](MicroMorse-Flow-Translator.png)
+<br>
+<br>
+<br>
+![Language Interpreters](MicroMorse-Flow-Language Interpreters.png)
 
 This is the English to Morse module:
 ```python
@@ -148,6 +155,8 @@ while i < len(newArray): # Loops based on number of characters in the array.
 
 ### Caller Module - _"Where the magic happens"_
 The caller module is where the program starts, its where the user decides what mode to use and from there the program blossoms into many different branches of modules. But they all lead back to this one function.
+
+![Whole Function Chart](MicroMorse-Flow-Whole Function.png)
 
 ```python
 def caller():

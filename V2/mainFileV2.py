@@ -138,14 +138,14 @@ def caller():
     # Keeps the whole program looped infinitely
     while True:
         # Uses "mode" to determine to send or receive.
-        if mode == "send":
+        if mode == "send" or mode == "Send":
             # Runs text input and translation functions if sending.
             text = input("Input message text: ")
             messageData = translator(text)
             radioSend(messageData)
             # Changes mode to receive.
             mode = "receive"
-        if mode == "receive":
+        if mode == "receive" or mode == "Received":
             # Sets givenData to whatever the result of radioListen() is.
             givenData = radioListen()
             # Takes givenData and uses it as a parameter in the translator function.
