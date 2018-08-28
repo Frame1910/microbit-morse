@@ -85,7 +85,7 @@ These modules handle the translation of data between Morse and English. These in
 <br>
 <br>
 <br>
-![Language Interpreters](MicroMorse-Flow-Language Interpreters.png)
+![Language Interpreters](LanguageInter.png)
 
 This is the English to Morse module:
 ```python
