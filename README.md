@@ -35,6 +35,8 @@ Once the English is translated, it is broadcasted **once** via radio in all dire
 ### About
 This project is being developed on Atom by GitHub using Python as the primary language.
 <br>
+The aim of this project is assist military communications officers in translating messages between languages. It solves this problem by doing the translation for the officer as well as sending the data for them.
+<br>
 Originally, there was meant to be 7 different modules:
 - Translation Modules
   - English to Morse
@@ -48,6 +50,8 @@ Originally, there was meant to be 7 different modules:
 - Caller (Main function the user will interact with)
 
 However, this was very messy and encountered plenty of bugs and errors. So the code was modified to take into account function parameters, the amount of modules are the same and they mostly produce the same results, but in a simple fashion. This allows variables modified in other functions to be used in other functions. This streamlines the code and makes it more flexible for other purposes. To put it into perspective, Version 1 had over 200 lines of code. Version 2 only has 140.
+
+###
 
 ## Module Details
 
