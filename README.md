@@ -34,24 +34,51 @@ Once the English is translated, it is broadcasted **once** via radio in all dire
 ## Documentation
 ### About
 This project is being developed on Atom by GitHub using Python as the primary language.
-<br>
-The aim of this project is assist military communications officers in translating messages between languages. It solves this problem by doing the translation for the officer as well as sending the data for them.
-<br>
-Originally, there was meant to be 7 different modules:
+
+The aim of this project is assist military communications officers in translating messages between languages. It does this by doing the translation for the officer as well as sending the data to the receiver.
+
+There are 6 different modules:
 - Translation Modules
   - English to Morse
   - Morse to English
 - Radio Communications
   - Radio Receiving
   - Radio Sending
-- Dictionaries
-  - English to Morse
-  - Morse to English
 - Caller (Main function the user will interact with)
 
-However, this was very messy and encountered plenty of bugs and errors. So the code was modified to take into account function parameters, the amount of modules are the same and they mostly produce the same results, but in a simple fashion. This allows variables modified in other functions to be used in other functions. This streamlines the code and makes it more flexible for other purposes. To put it into perspective, Version 1 had over 200 lines of code. Version 2 only has 140.
+Other major elements of the code are the dictionaries defined at the beginning of the file. These outline all the English and Morse values in both directions. These dictionaries could be changed into other forms of translation, such as ciphers and encrypted messages - all it takes is changing a few values on each device.
 
-###
+The code went through a rough version, this I called "V1" or the legacy version, it does the job, however, more human interaction and coordination is required to get it to work. Version 1, along with it's comments can be viewed in the folder "V1 - Legacy".
+
+### Planning & Design
+**Inputs:**
+- Keyboard through command line
+
+**Processes:**
+- Translation
+- Radio communications
+
+**Outputs:**
+- Console printing through command line
+
+**Control Structures/Flowcharts**
+- Flowcharts can be found along with the code they represent throughout this document.
+- Control structures needed for the project
+  - Condition-controlled loops
+  - Infinite Loops
+
+### Testing
+My original findings from Version 1 were that parameter passing was definitely needed to streamline the program and to keep human interference to a minimum.
+
+Certain bugs that kept cropping up were small, but big mistakes when I wrote the code causing catastrophic errors such as characters that are due to be translated being passed as `None` or `Null` values to the translator module. Due to this, the translator module would spit out errors and, due to the interpreter nature of Python, cause the program to cease to execute. Bugs like this one plagued my mind while writing the code, even when I didn't change anything within the module, a small change in another module could cause this to happen. 
+
+### Evaluation
+**Updates**
+- Updates can be retrieved automatically via GitHub along with changelogs.
+
+**Did it work?**
+- The program originally started as a more ambitious project, I had ideas of making the program scalable to more than two Micro:bits. This, unfortunately, could not be achieved with Python alone, or with the Micro:bits primitive data transmission methods.
+- As the project developed, I changed the goals I set for the it to achieve, more attainable ones. I'm confident in saying that this project fulfils the plan I laid out in the end.
 
 ## Module Details
 
