@@ -86,11 +86,7 @@ end
 ```
 **Trace Table**
 
-|  Input 	|  Translated Message 	| Back-Translated Message  	|
-|---	|---	|---	|---	|---	|
-|  "Hello" 	| ....&.&.-..&.-..&---  	| "hello"  	|
-| "My name is Darren"  	| --&-.--& &-.&.-&--&.& &..&...& &-..&.-&.-.&.-.&.&-.  	| "my name is darren"  	|
-| "Python is cool"  	| .--.&-.--&-&....&---&-.& &..&...& &-.-.&---&---&.-..  	| "python is cool"  	|   	|
+![Trace Table](TraceTable.png)
 
 ### Testing
 My original findings from Version 1 were that parameter passing was definitely needed to streamline the program and to keep human interference to a minimum.
