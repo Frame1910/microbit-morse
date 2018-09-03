@@ -67,10 +67,35 @@ The code went through a rough version, this I called "V1" or the legacy version,
   - Condition-controlled loops
   - Infinite Loops
 
+**Pseudo Code** of the whole program.
+```
+start
+  input mode
+  infinite loop
+    if mode = "send"
+        input message
+        messageData = result of translator
+        Send radio
+        set mode = "receive"
+    elif mode = "receive"
+        message data = result of radioListen
+        translated message = result of translator
+        print translated message
+        set mode = "send"
+end
+```
+**Trace Table**
+
+|  Input 	|  Translated Message 	| Back-Translated Message  	|
+|---	|---	|---	|---	|---	|
+|  "Hello" 	| ....&.&.-..&.-..&---  	| "hello"  	|
+| "My name is Darren"  	| --&-.--& &-.&.-&--&.& &..&...& &-..&.-&.-.&.-.&.&-.  	| "my name is darren"  	|
+| "Python is cool"  	| .--.&-.--&-&....&---&-.& &..&...& &-.-.&---&---&.-..  	| "python is cool"  	|   	|
+
 ### Testing
 My original findings from Version 1 were that parameter passing was definitely needed to streamline the program and to keep human interference to a minimum.
 
-Certain bugs that kept cropping up were small, but big mistakes when I wrote the code causing catastrophic errors such as characters that are due to be translated being passed as `None` or `Null` values to the translator module. Due to this, the translator module would spit out errors and, due to the interpreter nature of Python, cause the program to cease to execute. Bugs like this one plagued my mind while writing the code, even when I didn't change anything within the module, a small change in another module could cause this to happen. 
+Certain bugs that kept cropping up were small, but big mistakes when I wrote the code causing catastrophic errors such as characters that are due to be translated being passed as `None` or `Null` values to the translator module. Due to this, the translator module would spit out errors and, due to the interpreter nature of Python, cause the program to cease to execute. Bugs like this one plagued my mind while writing the code, even when I didn't change anything within the module, a small change in another module could cause this to happen.
 
 ### Evaluation
 **Updates**
