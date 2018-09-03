@@ -86,7 +86,7 @@ end
 ```
 **Trace Table**
 
-![Trace Table](TraceTable.png)
+![Trace Table](TraceTable.PNG)
 
 ### Testing
 My original findings from Version 1 were that parameter passing was definitely needed to streamline the program and to keep human interference to a minimum.
